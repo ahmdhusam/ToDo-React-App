@@ -1,0 +1,47 @@
+@import "./Helper";
+
+.outputs{
+    background-color: #eee;
+    padding: 20px;
+    li{
+        padding: 10px;
+        background-color: white;
+        margin: 5px;
+        list-style: none;
+        @include sm(){
+            display: flex;
+            align-items: center;
+        }
+        > p{
+            word-break: break-all;
+            font-size: 20px;
+            flex-grow: 1;
+            text-align: start;
+            padding: 5px;
+            @include sm(){
+                margin: {
+                    right: 10px;
+                }
+            }
+        }
+    }
+}
+
+
+.notasksmsg{
+    text-align: center;
+    color: red;
+    background-color: #eee;
+    padding: 20px;
+}
+
+
+
+.iscompleted{
+    color:green;
+}
+
+
+.delbtn{
+    @extend %btn;
+}

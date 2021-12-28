@@ -1,0 +1,41 @@
+@import "./Helper";
+
+
+.about{
+    background-color: #eeeeee;
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    margin: 10px 0px;
+    @include sm(){
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+    }
+    > div{
+        font-size: 23px;
+        padding: 10px;
+        background-color: #eee;
+        &:first-child{
+            span{
+                background-color: #E91E63;
+            }
+        }
+        &:nth-child(2){
+            span{
+                background-color: #03A9F4;
+            }
+        }
+        > span{
+            margin-inline-start: 10px;
+            font-size: 13px;
+            padding: 3px 6px;
+            border-radius: 5px;
+            color: white;
+            vertical-align: middle;
+        }
+    }
+    button{
+        @extend %btn;
+    }
+}

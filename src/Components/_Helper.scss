@@ -1,0 +1,46 @@
+$mainColor:#009688;
+
+
+
+$screenWidth:(
+    "sm":600px,
+    "md":768px,
+    "lg":992px,
+    "xl":1200px,
+);
+
+
+%btn{
+    margin-inline-start: 5px;
+    background-color: #E91E63;
+    padding: 7px;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    color: white;
+}
+
+
+
+@mixin sm(){
+    @media (min-width:map-get($screenWidth,"sm")) {
+        @content
+    }
+};
+@mixin md(){
+    @media (min-width:map-get($screenWidth,"md")) {
+        @content
+    }
+};
+
+@mixin lg(){
+    @media (min-width:map-get($screenWidth,"lg")) {
+        @content
+    }
+};
+
+@mixin xl(){
+    @media (min-width:map-get($screenWidth,"xl")) {
+        @content
+    }
+};
