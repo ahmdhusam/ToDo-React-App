@@ -15,8 +15,9 @@ const Form = ({todoList,onAddTodo}) => {
                 taskValue: inputValue,
                 completed: false,
             }
-            onAddTodo(todo)
-            setInputValue("")
+            onAddTodo(todo);
+            setInputValue("");
+            setIsFound(false);
         }
     }
 
