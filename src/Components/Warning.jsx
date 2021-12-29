@@ -1,10 +1,12 @@
-import React from 'react'
+import React from 'react';
+import Card from './Card';
+import classes from "./Warning.module.scss";
 
 const Worning = () => {
     return (
-        <div>
-            Exted
-        </div>
+        <Card className={classes.warning}>
+            Existed
+        </Card>
     )
 }
 

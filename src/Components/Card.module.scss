@@ -1,0 +1,10 @@
+@import "./Helper";
+
+.card{
+    border-radius: 0.3rem;
+    overflow: hidden;
+    margin: {
+        top: $cardMargin;
+        bottom: $cardMargin;
+    }
+}

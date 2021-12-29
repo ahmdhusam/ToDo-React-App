@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import Card from './Card';
 import classes from "./Form.module.scss";
 import Warning from './Warning';
 
@@ -35,13 +36,13 @@ const Form = ({todoList,onAddTodo}) => {
     }
 
     return (
-        <div>
+        <Card>
         <form className={classes.form} onSubmit={submitData}>
             <input type="text" value={inputValue} className={classes.input}  onChange={getInputValue}/>
             <input type="submit" value="+" className={classes.submit}/>
-            </form>
+        </form>
             {isFound && <Warning />}
-        </div>
+        </Card>
     )
 }
 

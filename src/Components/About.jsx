@@ -1,9 +1,10 @@
 import React from 'react';
 import classes from "./About.module.scss"
+import Card from './Card';
 
 const About = ({lengthOfTodos,lengthOfCompleted,onDeleteAll}) => {
     return (
-    <div className={classes.about}>
+    <Card className={classes.about}>
         <div>
         Tasks
         <span>{lengthOfTodos}</span>
@@ -13,7 +14,7 @@ const About = ({lengthOfTodos,lengthOfCompleted,onDeleteAll}) => {
         <span>{lengthOfCompleted}</span>
         </div>
         <button onClick={onDeleteAll}>Delete All</button>
-    </div>
+    </Card>
     )
 }
 

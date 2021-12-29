@@ -1,4 +1,5 @@
 import React from 'react';
+import Card from './Card';
 import classes from "./Todos.module.scss";
 
 const Todos = ({ todoList, onCompleteChange ,onDeleteTodo}) => {
@@ -22,11 +23,11 @@ const Todos = ({ todoList, onCompleteChange ,onDeleteTodo}) => {
 
 
     return (
-        <div>
+        <Card>
             <ul className={classes.outputs}>
             {data}
             </ul>
-        </div>
+        </Card>
     )
 }
 
