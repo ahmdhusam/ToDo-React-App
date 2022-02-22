@@ -1,34 +1,86 @@
-import React from 'react';
-import Card from './Card';
+import React, { useCallback } from "react";
+
+import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
+
+import Card from "./Card";
+
 import classes from "./Todos.module.scss";
 
-const Todos = ({ todoList, onCompleteChange ,onDeleteTodo}) => {
-    let completedXML = (<span className={classes.iscompleted}>Completed!</span>);
-    let data;
+const Todos = (props) => {
+    const { todoList, onCompleteChange, onDeleteTodo, onLocationChange } =
+        props;
 
-    
-    if (!todoList.length) {
-        data = <li className={classes.notasksmsg}>No Tasks</li>;
-    } else {
-        data = todoList.map(item => (
-            <li key={item.id} onClick={() => onCompleteChange(item.id)}>
-                <p>{item.taskValue}</p>
-                {item.completed && completedXML}
-                <button className={classes.delbtn} onClick={(event)=> onDeleteTodo(event,item.id)}>Delete</button>
-            </li>
-            ));
-    
+    const onDragEnd = useCallback(({ destination, source }) => {
+        // the only one that is required
+
+        if (destination === null) {
+            return;
+        }
+
+        if (destination.index === source.index) {
+            return;
+        }
+
+        onLocationChange(source.index, destination.index);
+    }, []);
+
+    let todos = <li className={classes.notasksmsg}>No Tasks</li>;
+
+    if (!!todoList.length) {
+        let completedXML = (
+            <span className={classes.iscompleted}>Completed!</span>
+        );
+
+        todos = todoList.map((item, index) => (
+            <Draggable
+                draggableId={item.id.toString()}
+                index={index}
+                key={item.id}
+            >
+                {(provided, snapshot) => {
+                    return (
+                        <div
+                            ref={provided.innerRef}
+                            {...provided.draggableProps}
+                            {...provided.dragHandleProps}
+                        >
+                            <li onClick={onCompleteChange.bind(null, item.id)}>
+                                <p>{item.taskValue}</p>
+                                {item.completed && completedXML}
+                                <button
+                                    className={classes.delbtn}
+                                    onClick={onDeleteTodo.bind(null, item.id)}
+                                >
+                                    Delete
+                                </button>
+                            </li>
+                        </div>
+                    );
+                }}
+            </Draggable>
+        ));
     }
-
-
 
     return (
         <Card>
-            <ul className={classes.outputs}>
-            {data}
-            </ul>
+            <DragDropContext onDragEnd={onDragEnd}>
+                <ul className={classes.outputs}>
+                    <Droppable droppableId="list">
+                        {(provided, snapshot) => (
+                            <div
+                                ref={provided.innerRef}
+                                {...provided.droppableProps}
+                            >
+                                {/* only re-render if the students array reference changes */}
+                                {todos}
+                                {provided.placeholder}
+                            </div>
+                        )}
+                    </Droppable>
+                </ul>
+            </DragDropContext>
         </Card>
-    )
-}
+    );
+};
 
-export default Todos
+export default Todos;

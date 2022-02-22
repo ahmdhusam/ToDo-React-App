@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useCallback } from "react";
 
 import "./App.css";
 
@@ -8,46 +8,55 @@ import Todos from "./Components/Todos";
 
 function App() {
     const [todoList, setTodoList] = useState([]);
-    const lengthComp = todoList.filter((el) => el.completed);
+
+    const lengthComp = todoList?.filter((el) => el?.completed);
 
     useEffect(() => {
         if (localStorage.getItem("todos")) {
             const todosList = JSON.parse(localStorage.getItem("todos"));
             setTodoList(todosList);
         }
+    }, [setTodoList]);
+
+    useEffect(() => {
+        localStorage.setItem("todos", JSON.stringify(todoList));
+    }, [todoList]);
+
+    const AddTodo = useCallback((todo) => {
+        setTodoList((prev) => [...prev, todo]);
     }, []);
 
-    const AddTodo = (todo) => {
-        setTodoList((prev) => {
-            let newTodos = [...prev, todo];
-            localStorage.setItem("todos", JSON.stringify(newTodos));
-            return newTodos;
-        });
-    };
-
-    const deleteTodo = (event, id) => {
+    const deleteTodo = useCallback((id, event) => {
         event.stopPropagation();
         setTodoList((prev) => {
-            let newTodos = prev.filter((item) => item.id !== id);
-            localStorage.setItem("todos", JSON.stringify(newTodos));
+            const newTodos = prev.filter((item) => item.id !== id);
             return newTodos;
         });
-    };
+    }, []);
 
-    const deleteAll = () => {
+    const deleteAll = useCallback(() => {
         setTodoList([]);
-        localStorage.setItem("todos", JSON.stringify([]));
-    };
+    }, []);
 
-    const completeChange = (id) => {
+    const completeChange = useCallback((id) => {
         setTodoList((prev) => {
             let newTodos = prev.map((item) =>
                 item.id === id ? { ...item, completed: !item.completed } : item
             );
-            localStorage.setItem("todos", JSON.stringify(newTodos));
             return newTodos;
         });
-    };
+    }, []);
+
+    const changeTodoLocation = useCallback((from, to) => {
+        const swapTodo = (prev) => {
+            const todo = prev[from];
+            const filteredTodos = prev.filter((item, index) => index !== from);
+            filteredTodos.splice(to, 0, todo);
+            return filteredTodos;
+        };
+
+        setTodoList(swapTodo);
+    }, []);
 
     return (
         <div className="app">
@@ -61,6 +70,7 @@ function App() {
                 todoList={todoList}
                 onCompleteChange={completeChange}
                 onDeleteTodo={deleteTodo}
+                onLocationChange={changeTodoLocation}
             />
         </div>
     );
