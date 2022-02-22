@@ -10,19 +10,22 @@ const Todos = (props) => {
     const { todoList, onCompleteChange, onDeleteTodo, onLocationChange } =
         props;
 
-    const onDragEnd = useCallback(({ destination, source }) => {
-        // the only one that is required
+    const onDragEnd = useCallback(
+        ({ destination, source }) => {
+            // the only one that is required
 
-        if (destination === null) {
-            return;
-        }
+            if (destination === null) {
+                return;
+            }
 
-        if (destination.index === source.index) {
-            return;
-        }
+            if (destination.index === source.index) {
+                return;
+            }
 
-        onLocationChange(source.index, destination.index);
-    }, []);
+            onLocationChange(source.index, destination.index);
+        },
+        [onLocationChange]
+    );
 
     let todos = <li className={classes.notasksmsg}>No Tasks</li>;
 
