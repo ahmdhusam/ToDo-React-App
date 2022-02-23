@@ -2,9 +2,9 @@ import React, { useEffect, useState, useCallback } from "react";
 
 import "./App.css";
 
-import Form from "./Components/Form";
-import About from "./Components/About";
-import Todos from "./Components/Todos";
+import Form from "./Components/form/Form";
+import About from "./Components/about/About";
+import Todos from "./Components/todos/Todos";
 
 function App() {
     const [todoList, setTodoList] = useState([]);
@@ -12,6 +12,9 @@ function App() {
     const lengthComp = todoList?.filter((el) => el?.completed);
 
     useEffect(() => {
+        window.addEventListener("beforeinstallprompt", function (event) {
+            event.prompt();
+        });
         if (localStorage.getItem("todos")) {
             const todosList = JSON.parse(localStorage.getItem("todos"));
             setTodoList(todosList);

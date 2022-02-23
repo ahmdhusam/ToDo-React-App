@@ -1,31 +1,30 @@
-@import "./Helper";
+@import "../styles/Helper";
 
-
-.about{
+.about {
     background-color: #eeeeee;
     display: flex;
     flex-direction: column;
     padding: 10px;
-    @include sm(){
+    @include sm() {
         flex-direction: row;
         justify-content: space-between;
         align-items: center;
     }
-    > div{
+    > div {
         font-size: 23px;
         padding: 10px;
         background-color: #eee;
-        &:first-child{
-            span{
-                background-color: #E91E63;
+        &:first-child {
+            span {
+                background-color: #e91e63;
             }
         }
-        &:nth-child(2){
-            span{
-                background-color: #03A9F4;
+        &:nth-child(2) {
+            span {
+                background-color: #03a9f4;
             }
         }
-        > span{
+        > span {
             margin-inline-start: 10px;
             font-size: 13px;
             padding: 3px 6px;
@@ -34,7 +33,7 @@
             vertical-align: middle;
         }
     }
-    button{
+    button {
         @extend %btn;
     }
 }

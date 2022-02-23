@@ -1,24 +1,24 @@
-@import "./Helper";
+@import "../styles/Helper";
 
-.outputs{
+.outputs {
     background-color: #eee;
     padding: 20px;
-    li{
+    li {
         padding: 10px;
         background-color: white;
         margin: 5px;
         list-style: none;
-        @include sm(){
+        @include sm() {
             display: flex;
             align-items: center;
         }
-        > p{
+        > p {
             word-break: break-all;
             font-size: 20px;
             flex-grow: 1;
             text-align: start;
             padding: 5px;
-            @include sm(){
+            @include sm() {
                 margin: {
                     right: 10px;
                 }
@@ -27,21 +27,17 @@
     }
 }
 
-
-.notasksmsg{
+.notasksmsg {
     text-align: center;
     color: red;
     background-color: #eee;
     padding: 20px;
 }
 
-
-
-.iscompleted{
-    color:green;
+.iscompleted {
+    color: green;
 }
 
-
-.delbtn{
+.delbtn {
     @extend %btn;
 }

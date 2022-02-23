@@ -1,6 +1,6 @@
 import React from "react";
 import classes from "./About.module.scss";
-import Card from "./Card";
+import Card from "../card/Card";
 
 const About = ({ lengthOfTodos = 0, lengthOfCompleted = 0, onDeleteAll }) => {
     return (

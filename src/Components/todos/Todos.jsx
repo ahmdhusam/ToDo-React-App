@@ -2,7 +2,7 @@ import React, { useCallback } from "react";
 
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 
-import Card from "./Card";
+import Card from "../card/Card";
 
 import classes from "./Todos.module.scss";
 
