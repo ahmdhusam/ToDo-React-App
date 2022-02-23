@@ -4,18 +4,33 @@
         <meta charset="utf-8" />
         <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta name="theme-color" content="#000000" />
-        <meta
-            name="description"
-            content="Web site created using create-react-app"
-        />
-        <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
-        <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+        <meta name="description" content="A simple ToDo React App" />
 
         <title>ToDo App</title>
+        <meta name="theme-color" content="#009688" />
+
+        <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+
+        <meta name="msapplication-TileColor" content="#009688" />
+
         <meta name="apple-mobile-web-app-capable" content="yes" />
-        <meta name="apple-mobile-web-app-status-bar-style" content="black" />
-        <meta name="apple-mobile-web-app-title" content="PWAGram" />
+        <meta name="apple-mobile-web-app-title" content="ToDo App" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="#009688" />
+        <link
+            rel="apple-touch-icon"
+            href="%PUBLIC_URL%/favicon.icog"
+            sizes="16x16"
+        />
+        <link
+            rel="apple-touch-icon"
+            href="%PUBLIC_URL%/favicon.icog"
+            sizes="24x24"
+        />
+        <link
+            rel="apple-touch-icon"
+            href="%PUBLIC_URL%/favicon.icog"
+            sizes="32x32"
+        />
         <link
             rel="apple-touch-icon"
             href="%PUBLIC_URL%/favicon.icog"
@@ -45,16 +60,15 @@
             name="msapplication-TileImage"
             content="%PUBLIC_URL%/icon-192x192.png"
         />
-        <meta name="msapplication-TileColor" content="#03a9f4" />
-        <meta name="theme-color" content="#009688" />
+
+        <script defer>
+            window.addEventListener("load", () => {
+                if ("serviceWorker" in navigator) {
+                    navigator.serviceWorker.register("%PUBLIC_URL%/sw.js");
+                }
+            });
+        </script>
     </head>
-    <script defer>
-        window.addEventListener("load", () => {
-            if ("serviceWorker" in navigator) {
-                navigator.serviceWorker.register("%PUBLIC_URL%/sw.js");
-            }
-        });
-    </script>
     <body>
         <noscript>You need to enable JavaScript to run this app.</noscript>
         <div id="root"></div>

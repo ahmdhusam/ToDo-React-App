@@ -5,8 +5,8 @@
     "orientation": "portrait-primary",
     "scope": ".",
     "start_url": "/",
-    "name": "ToDo",
-    "short_name": "ToDo React App",
+    "name": "ToDo App",
+    "short_name": "ToDo",
     "description": "A simple ToDo React App",
     "icons": [
         {

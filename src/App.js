@@ -12,9 +12,6 @@ function App() {
     const lengthComp = todoList?.filter((el) => el?.completed);
 
     useEffect(() => {
-        window.addEventListener("beforeinstallprompt", function (event) {
-            event.prompt();
-        });
         if (localStorage.getItem("todos")) {
             const todosList = JSON.parse(localStorage.getItem("todos"));
             setTodoList(todosList);
