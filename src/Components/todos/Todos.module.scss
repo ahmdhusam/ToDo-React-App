@@ -13,11 +13,13 @@
             align-items: center;
         }
         > p {
+            padding: 5px;
+            flex-grow: 1;
             word-break: break-all;
             font-size: 20px;
-            flex-grow: 1;
             text-align: start;
-            padding: 5px;
+            text-transform: capitalize;
+            
             @include sm() {
                 margin: {
                     right: 10px;
